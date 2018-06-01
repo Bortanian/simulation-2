@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateStepThree } from '../../ducks/reducer'
+import { updateStepThree, clearFields } from '../../ducks/reducer'
 
 class StepThree extends Component {
     constructor() {
@@ -24,12 +24,16 @@ class StepThree extends Component {
     }
     handleComplete() {
         axios.post('/api/houses', {
-            name: this.state.name,
-            address: this.state.address,
-            city: this.state.city,
-            state: this.state.state,
-            zip: this.state.zip
+            name: this.props.name,
+            address: this.props.address,
+            city: this.props.city,
+            state: this.props.state,
+            zip: this.props.zip,
+            image: this.props.image,
+            mortgage: this.state.mortgage,
+            rent: this.state.rent
         })
+        this.props.clearFields()
     }
     mortgageChange(val) {
         this.setState({
@@ -43,11 +47,12 @@ class StepThree extends Component {
     }
     handleClick() {
         this.props.updateStepThree(this.state.mortgage, this.state.rent)
+        
     }
     render() {
         return (
             <div>
-                <p>Recommended Rent:</p>
+                <p>Recommended Rent: {this.state.mortgage * 1.25}</p>
                 <p>Monthly Mortgage Amount</p>
                 <input value={this.state.mortgage}
                     onChange={(e) => this.mortgageChange(e.target.value)} />
@@ -79,4 +84,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {updateStepThree})(StepThree)
+export default connect(mapStateToProps, {updateStepThree, clearFields})(StepThree)

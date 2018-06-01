@@ -39,6 +39,9 @@ export default class Dashboard extends Component {
                 city={house.city}
                 state={house.state}
                 zip={house.zip}
+                image={house.image}
+                mortgage={house.mortgage}
+                rent={house.rent}
                 delete={this.deleteHouse}
                 />
             )

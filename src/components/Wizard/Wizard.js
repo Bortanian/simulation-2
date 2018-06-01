@@ -4,13 +4,19 @@ import {Route} from 'react-router-dom';
 import StepOne from '../StepOne/StepOne';
 import StepTwo from '../StepTwo/StepTwo';
 import StepThree from '../StepThree/StepThree';
+import {connect} from 'react-redux';
+import {clearFields} from '../../ducks/reducer'
 
-export default class Wizard extends Component{
+class Wizard extends Component{
     constructor(){
         super();
         this.state = {
             
-        }    
+        }
+        this.handleClick = this.handleClick.bind(this)    
+    }
+    handleClick(){
+        this.props.clearFields()
     }
     render(){
         return(
@@ -18,7 +24,7 @@ export default class Wizard extends Component{
                 <p>I AM THE WIZARD COMPONENT</p>
                 <br/>
                 <Link to='/'>
-                <button>Cancel</button>
+                <button onClick={() => this.handleClick()}>Cancel</button>
                 </Link> 
                 <Route path='/wizard/step1' component={StepOne}/>
                 <Route path='/wizard/step2' component={StepTwo}/>    
@@ -27,3 +33,7 @@ export default class Wizard extends Component{
         )
     }
 }
+function mapStateToProps(state){
+    return{state}
+}
+export default connect(mapStateToProps, {clearFields})(Wizard)

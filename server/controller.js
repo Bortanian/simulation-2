@@ -8,9 +8,9 @@ module.exports = {
     },
     addHouse:(req, res) => {
         const db = req.app.get('db');
-        const {name, address, city, state, zip} = req.body
+        const {name, address, city, state, zip, image, mortgage, rent} = req.body
 
-        db.add_house([name, address, city, state, zip])
+        db.add_house([name, address, city, state, zip, image, mortgage, rent])
         .then( () => res.status(200).send())
         .catch( () => res.status(500).send())
     },
