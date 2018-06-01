@@ -13,5 +13,13 @@ module.exports = {
         db.add_house([name, address, city, state, zip])
         .then( () => res.status(200).send())
         .catch( () => res.status(500).send())
+    },
+    deleteHouse:(req, res) => {
+        const db = req.app.get('db');
+        const {params} = req;
+
+        db.delete_house([params.id])
+        .then( () => res.status(200).send())
+        .catch( () => res.status(500).send())
     }
 }

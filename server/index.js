@@ -12,6 +12,7 @@ app.use(bodyParser.json())
 
 app.get('/api/houses', ctrl.getHouses)
 app.post('/api/houses', ctrl.addHouse)
+app.delete('/api/houses/:id', ctrl.deleteHouse)
 
 
 app.listen(SERVER_PORT, () => {
