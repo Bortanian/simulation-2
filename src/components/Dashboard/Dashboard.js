@@ -12,7 +12,6 @@ export default class Dashboard extends Component {
     }
     componentDidMount(){
         axios.get('/api/houses').then(res => {
-            console.log(res)
             this.setState({
                 houseList: res.data
             })
@@ -21,14 +20,14 @@ export default class Dashboard extends Component {
     render() {
         let mappedList = this.state.houseList.map(house => {
             return (
-                <House />
-                // <div key={house.id}>
-                //     <p>Property Name: {house.name}</p>
-                //     <p>Address: {house.address}</p>
-                //     <p>City: {house.city}</p>
-                //     <p>State: {house.state}</p>
-                //     <p>Zip: {house.zipCode}</p>
-                // </div>
+                <House
+                key={house.houseid}
+                name={house.name}
+                address={house.address}
+                city={house.city}
+                state={house.state}
+                zip={house.zip}
+                />
             )
         })
         return (

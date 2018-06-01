@@ -11,6 +11,7 @@ massive(CONNECTION_STRING).then(db => app.set('db', db));
 app.use(bodyParser.json())
 
 app.get('/api/houses', ctrl.getHouses)
+app.post('/api/houses', ctrl.addHouse)
 
 
 app.listen(SERVER_PORT, () => {
