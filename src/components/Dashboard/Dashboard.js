@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import House from '../House/House'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import './Dashboard.css'
 
 export default class Dashboard extends Component {
     constructor() {
@@ -12,16 +13,16 @@ export default class Dashboard extends Component {
         this.getHouses = this.getHouses.bind(this)
         this.deleteHouse = this.deleteHouse.bind(this)
     }
-    componentDidMount(){
+    componentDidMount() {
         this.getHouses()
     }
 
-    deleteHouse(id){
+    deleteHouse(id) {
         axios.delete(`/api/houses/${id}`)
         this.getHouses()
     }
 
-    getHouses(){
+    getHouses() {
         axios.get('/api/houses').then(res => {
             this.setState({
                 houseList: res.data
@@ -32,27 +33,31 @@ export default class Dashboard extends Component {
         let mappedList = this.state.houseList.map(house => {
             return (
                 <House
-                key={house.houseid}
-                id={house.houseid}
-                name={house.name}
-                address={house.address}
-                city={house.city}
-                state={house.state}
-                zip={house.zip}
-                image={house.image}
-                mortgage={house.mortgage}
-                rent={house.rent}
-                delete={this.deleteHouse}
+                    key={house.houseid}
+                    id={house.houseid}
+                    name={house.name}
+                    address={house.address}
+                    city={house.city}
+                    state={house.state}
+                    zip={house.zip}
+                    image={house.image}
+                    mortgage={house.mortgage}
+                    rent={house.rent}
+                    delete={this.deleteHouse}
                 />
             )
         })
         return (
-            <div>
-                <p>I AM THE DASHBOARD COMPONENT</p>
-                {mappedList}
-                <Link to='/wizard/step1'>
-                    <button>Add New Property</button>
-                </Link>
+            <div className='outer-div'>
+                <div className='inner-div'>
+                    <div className='dash-head'>
+                        <h1 className='dash-title'>Dashboard</h1>
+                        <Link to='/wizard/step1'>
+                            <button className='add-prop'>Add New Property</button>
+                        </Link>
+                    </div>
+                    {mappedList}
+                </div>
             </div>
         )
     }

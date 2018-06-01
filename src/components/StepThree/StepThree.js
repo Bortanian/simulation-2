@@ -17,6 +17,7 @@ class StepThree extends Component {
         this.handleClick = this.handleClick.bind(this)
     }
     componentDidMount(){
+        console.log(this.props.match)
         this.setState({
             mortgage: this.props.mortgage,
             rent: this.props.rent

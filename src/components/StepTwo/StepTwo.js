@@ -13,6 +13,7 @@ class StepTwo extends Component {
         this.handleClick = this.handleClick.bind(this)
     }
     componentDidMount(){
+        console.log(this.props.match)
         this.setState({
             image: this.props.image
         })

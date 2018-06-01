@@ -1,0 +1,27 @@
+.outer-div{
+    background-color: #afd4c0;
+    width: 100%;
+    height: 100vh;
+}
+.inner-div{
+    margin: 0 auto;
+    background-color: #e5f4ec;
+    width: 75%;
+    height: 100vh;
+}
+.dash-head{
+    position: relative;
+    height: 40px;
+}
+.dash-title{
+    margin: 0;
+    position: absolute;
+    left: 15px;
+    top:15px;
+    color: #3B5249;
+}
+.add-prop{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}

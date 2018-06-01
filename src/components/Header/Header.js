@@ -1,9 +1,10 @@
 import React from 'react';
+import './Header.css'
 
 export default function Header(props){
     return(
-        <div>
-            <p>I AM THE HEADER COMPONENT</p>
+        <div className='header'>
+            <h1 className='title'>HOUSER</h1>
         </div> 
     )
 }

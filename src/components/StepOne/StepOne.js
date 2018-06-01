@@ -21,6 +21,7 @@ class StepOne extends Component {
         this.handleClick = this.handleClick.bind(this)
     }
     componentDidMount(){
+        console.log(this.props.match)
         this.setState({
             name: this.props.name,
             address: this.props.address,
@@ -64,7 +65,7 @@ class StepOne extends Component {
         )
     }
     render() {
-        console.log(this.props)
+
         return (
             <div>
                 <p>Name:</p>

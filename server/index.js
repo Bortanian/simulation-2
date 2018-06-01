@@ -9,6 +9,7 @@ const app = express();
 massive(CONNECTION_STRING).then(db => app.set('db', db));
 
 app.use(bodyParser.json())
+app.use(express.static('../build'))
 
 app.get('/api/houses', ctrl.getHouses)
 app.post('/api/houses', ctrl.addHouse)
