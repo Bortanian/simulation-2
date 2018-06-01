@@ -47,7 +47,7 @@ export default class Dashboard extends Component {
             <div>
                 <p>I AM THE DASHBOARD COMPONENT</p>
                 {mappedList}
-                <Link to='/wizard'>
+                <Link to='/wizard/step1'>
                     <button>Add New Property</button>
                 </Link>
             </div>
